@@ -32,6 +32,11 @@ public class BestProgramIBS {
                     MaxElement maxElement = new MaxElement();
                     maxElement.maxElement();
                     break;
+                default:
+                    System.out.println("Пункт меню указан не корректно\n" +
+                            "Или функционал находится в разработке\n\n" +
+                            "Выберите приложение из меню отправив его номер в терминал:\n");
+
             }
         }
     }
