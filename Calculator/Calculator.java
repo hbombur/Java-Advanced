@@ -1,3 +1,5 @@
+package Calculator;
+
 import java.util.Scanner;
 
 public class Calculator {
@@ -70,20 +72,20 @@ public class Calculator {
         }
     }
 
-    public static void main(String[] args) {
+    public void calculator() {
         Scanner scanIn = new Scanner(System.in);
 
-        System.out.println("Добро пожаловать в приложение корпорации IBS Calculator\n" +
+        System.out.println("Добро пожаловать в приложение корпорации IBS Calculator.Calculator\n" +
                 "Текущая версия приложения: 1.0.0\n" +
                 "В данный момент поддерживаются следующии операции:\n" +
                 "'+', '-', '*', '/'\n" +
                 "В качесте разделителя для чисел с плавающей точкой используйте символ '.'\n" +
-                "Для завершения работы калькулятора введите 'Finish'\n" +
+                "Для завершения работы калькулятора введите 'Exit'\n" +
                 "Введите запрос в виде 'a + b':\n");
         while (true) {
             String calcRequest = scanIn.nextLine();
-            if (calcRequest.equals("Finish") || calcRequest.equals("finish")) {
-                System.exit(0);
+            if (calcRequest.equalsIgnoreCase("exit")) {
+                break;
             }
             String[] splittedRequest = calcRequest.split(" ");
             switch (splittedRequest[1]) {
