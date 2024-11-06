@@ -1,24 +1,30 @@
-package MaxElement;
+package max_element;
 
 import java.util.Scanner;
 
 public class MaxElement {
-    Scanner scanIn = new Scanner(System.in);
+    Scanner scanIn;
+    boolean errorFlag = false;
+
+    public MaxElement(Scanner scanner){ this.scanIn = scanner; }
 
     private int scanningCountOfElement() {
         System.out.println("Введите размер массива:");
-        int result = scanIn.nextInt();
-        return result;
+        return scanIn.nextInt();
     }
 
     private String[] getArrayOfString(int countOfElement) {
-        String[] arrayOfString = new String[countOfElement];
-        String scanString = scanIn.nextLine();
+        String[] arrayOfString;
+        String scanString = "";
+
+        System.out.println("Введите через пробел слова в количестве, указанном ранее:");
+        scanString = scanIn.nextLine();
+        scanString += scanIn.nextLine();
         arrayOfString = scanString.split(" ");
         if (arrayOfString.length != countOfElement) {
             return null;
         }
-        return  arrayOfString;
+        return arrayOfString;
     }
 
     private void foundMaxString(String[] arrayOfString) {
@@ -35,11 +41,10 @@ public class MaxElement {
         int countOfElement = scanningCountOfElement();
         String[] arrayOfString = getArrayOfString(countOfElement);
         while (arrayOfString == null) {
-            System.out.println("Введите через пробел слова в количестве, указанном ранее:");
-            arrayOfString = getArrayOfString(countOfElement);
+                System.out.println("Неверное количество слов");
+                arrayOfString = getArrayOfString(countOfElement);
         }
         foundMaxString(arrayOfString);
-//        scanIn.close();
     }
 
 }
