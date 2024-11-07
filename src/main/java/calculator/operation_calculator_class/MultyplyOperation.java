@@ -1,16 +1,12 @@
 package calculator.operation_calculator_class;
 
-import calculator.abstract_class.AbstractCalculator;
+public class MultyplyOperation {
 
-public class MultyplyOperation extends AbstractCalculator {
-
-    @Override
-    public void calculation(int num1, int num2) {
-        setIntegerResult(num1 * num2);
+    public int calculation(int num1, int num2) {
+        return num1 * num2;
     }
 
-    @Override
-    public void calculation(double num1, double num2) {
-        setDoubleResult(num1 * num2);
+    public double calculation(double num1, double num2) {
+        return num1 * num2;
     }
 }

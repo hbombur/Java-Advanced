@@ -37,7 +37,7 @@ public class FunnySwap {
 
     private void findMinimalPositive() {
         for (int i = 0; i < SIZE_OF_ARRAY; i++) {
-            if (array[i] <= min && array[i] >= 0) {
+            if (array[i] <= min && array[i] > 0) {
                 min = array[i];
                 indexOfMin = i;
             }

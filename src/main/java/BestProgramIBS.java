@@ -1,8 +1,11 @@
-import calculator.Calculator;
+import calculator.Calculation;
 import funny_swap.FunnySwap;
 import max_element.MaxElement;
+import statistic_from_file.StatisticFromFile;
 import sweet_gift.SweetGift;
 
+import java.io.IOException;
+import java.util.Map;
 import java.util.Scanner;
 
 public class BestProgramIBS {
@@ -19,6 +22,7 @@ public class BestProgramIBS {
                     "|  2 - Поиск наибольшего слова         |\n" +
                     "|  3 - Поменять числа местами          |\n" +
                     "|  4 - Собрать сладкий подарок         |\n" +
+                    "|  5 - Слово с повторениями            |\n" +
                     "|                                      |\n" +
                     "|  Для завершения введите Exit         |\n" +
                     "|======================================|\n");
@@ -29,8 +33,8 @@ public class BestProgramIBS {
             }
             switch (choiceMenu) {
                 case "1":
-                    Calculator calculator = new Calculator();
-                    calculator.calculator();
+                    Calculation calculation = new Calculation();
+                    calculation.calculator(scanIn);
                     break;
                 case "2":
                     MaxElement maxElement = new MaxElement(scanIn);
@@ -54,6 +58,17 @@ public class BestProgramIBS {
                     System.out.println("Общая цена подарка: " + sweetGift.getTotalPrice());
                     sweetGift.getInfoGift();
                     break;
+                case "5":
+                    Map<String, Integer> sortedMap;
+                    StatisticFromFile statisticFromFile = new StatisticFromFile();
+                    try {
+                        sortedMap = statisticFromFile.createSortedMap("statistic_from_file/file.txt");
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                    Map.Entry<String, Integer> mostCommonWord = statisticFromFile.findMostCommonWord(sortedMap);
+                    System.out.printf("Слово с максимальным количеством повторений: '%s' (%d)%n",
+                mostCommonWord.getKey(), mostCommonWord.getValue());
                 default:
                     System.out.println("Пункт меню указан не корректно\n" +
                             "Или функционал находится в разработке\n\n" +
